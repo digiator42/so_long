@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/04 19:59:40 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/06 16:24:07 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 // # include <mlx.h>
 # include <stdio.h>
 # include <zlib.h>
+# include <string.h>
 
 typedef struct s_map
 {
@@ -33,6 +34,8 @@ typedef struct	s_data
 {
 	void	*img;
 	char	*addr;
+	int x;
+	int y;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
