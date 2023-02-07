@@ -6,17 +6,14 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/07 14:52:39 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/07 15:13:51 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 int is_valid_name(char *str)
-{
-	int i;
-	
-	i = 0;
+{	
 	while(*str != '.')
 		str++;
 	if(strcmp((char *)str, ".ber"))
@@ -24,15 +21,6 @@ int is_valid_name(char *str)
 	return 1;		
 }
 
-int parsing(int ac, char **av)
-{
-	if(ac != 2)
-		return 0;
-
-	if(!is_valid_name(av[1]))
-		return 0;	
-	return 1;	
-}
 
 void header_footer(char *line)
 {
@@ -44,7 +32,32 @@ void header_footer(char *line)
 		j++;
 	}
 }
-int valid(char **map)
+
+int map_requisite(char **map, int h)
+{
+	int x;
+	int y;
+	int count;
+
+	count = 0;
+	y = 1;
+	while(y < h)
+	{
+		x = 0;
+		while (map[y][x] && map[y][x] != '\n')
+		{
+			if(map[y][x] == 'C' || map[y][x] == 'P' || map[y][x] == 'E')
+				count++;
+			x++;	
+		}
+		y++;
+	}
+	if(count < 3)
+		return (printf("wrong requisite"), 0);
+	return 1;	
+}
+
+int valid_map(char **map)
 {
 	int h = 0;
 	while (map[h])
@@ -63,6 +76,8 @@ int valid(char **map)
 			return(printf("x not valid"), 0);
 		x++;
 	}
+	if(!map_requisite(map, h))
+		return 0;
 	return 1;
 }
 
@@ -94,6 +109,15 @@ void read_map(char *arg, t_map *map)
 	}
 }
 
+int parsing(int ac, char **av, t_map *map)
+{
+	if(ac != 2)
+		return 0;
+	read_map(av[1], map);
+	if(!is_valid_name(av[1]) || !valid_map(map->map))
+		return 0;	
+	return 1;	
+}
 
 int	main(int ac, char **av)
 {
@@ -108,13 +132,10 @@ int	main(int ac, char **av)
 	// img.x = 0;
 	// img.y = 0;
 	
-	if(!parsing(ac, av))
+	if(!parsing(ac, av, &map))
 		write(2, "ERROR\n", 6);
-	read_map(av[1], &map);
-	if(!valid(map.map))
-		return (0);
-	// while(*map.map)
-	// 	printf("%s", *map.map++);
+	while(*map.map)
+		printf("%s", *map.map++);
 	// mlx = mlx_init();
 	// img.img = mlx_new_window(mlx, 1280, 640, "so_long");
 	// image = mlx_xpm_file_to_image(mlx, "space.xpm", &w, &h);
