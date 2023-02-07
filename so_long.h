@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/07 16:46:45 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/07 19:37:19 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,21 @@ typedef struct s_map
 	char	**map;
 	void	*img;
 	char	*addr;
+	void *mlx;
+	void *player;
+	void *wall;
+	void *coin;
+	void *space;
+	void *exit;
 	int	x;
 	int	y;
+	int	xpos;
+	int	ypos;
+	int h;
+	int l;
+	int w;
+	int v;
 	int c_cnt;
-	int p_index;
-	int e_index;
 	int	bits_per_pixel;
 	int	line_length;
 } t_map;

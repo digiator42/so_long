@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/07 17:04:10 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/07 21:39:04 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int map_requisite(t_map *map, int h)
 				count++;
 			if(map->map[y][x] == 'E')
 				count++;
-			x++;	
+			x++;
 		}
 		y++;
 	}
@@ -80,7 +80,7 @@ int valid_map(t_map *map)
 			return(printf("x not valid"), 0);
 		x++;
 	}
-	if(!map_requisite(map, h))
+	if(!map_requisite(map, h) || (map->x == map->y))
 		return 0;
 	return 1;
 }
@@ -120,34 +120,60 @@ int parsing(int ac, char **av, t_map *map)
 	read_map(av[1], map);
 	if(!is_valid_name(av[1]) || !valid_map(map))
 		return 0;
+	map->ypos = 0;
+	while(map->ypos < map->y)
+	{
+		map->xpos = map->ypos + 1;
+		if(ft_strlen(map->map[map->ypos]) >ft_strlen(map->map[map->xpos]))
+			return (printf("not equal"), 0);
+		map->ypos++;
+	}
 	return 1;	
+}
+
+void map_init(t_map *map)
+{
+	int w = 64;
+	int h = 64;
+	map->mlx = mlx_init();
+	map->img = mlx_new_window(map->mlx, (map->x * 64), (map->y * 64), "so_long");
+	map->player = mlx_xpm_file_to_image(map->mlx, "includes/player.xpm", &w, &h);
+	map->wall = mlx_xpm_file_to_image(map->mlx, "includes/wall.xpm", &w, &h);
+	map->coin = mlx_xpm_file_to_image(map->mlx, "includes/coin.xpm", &w, &h);
+	map->space = mlx_xpm_file_to_image(map->mlx, "includes/space.xpm", &w, &h);
+	map->exit = mlx_xpm_file_to_image(map->mlx, "includes/exit.xpm", &w, &h);
 }
 
 void draw_map(t_map *map)
 {
-	void *mlx;
-	int y;
-	int x=0;
-	// void *mlx_win = NULL;
-	void *image;
-	int w = 64;
-	int h = 64;
-	
-	mlx = mlx_init();
-	map->img = mlx_new_window(mlx, 1280, 640, "so_long");
-	image = mlx_xpm_file_to_image(mlx, "includes/space.xpm", &w, &h);
-	y = 0;
-	while (y <= 640)
+	map->ypos = 0;
+	map->v = 0;
+	map_init(map);
+	while (map->ypos < map->y)
 	{
-		x = 0;
-		while(x <= 1280)
+		map->xpos = 0;
+		map->l = 0;
+		while(map->xpos < map->x)
 		{
-			mlx_put_image_to_window(mlx, map->img, image, x, y);
-			x += 64;
+			write(1, &map->map[map->ypos][map->xpos], 1);
+			if(map->map[map->ypos][map->xpos] == 'P')
+				mlx_put_image_to_window(map->mlx, map->img, map->player, map->l, map->v);
+			if(map->map[map->ypos][map->xpos] == 'E')
+				mlx_put_image_to_window(map->mlx, map->img, map->exit, map->l, map->v);
+			if(map->map[map->ypos][map->xpos] == 'C')
+				mlx_put_image_to_window(map->mlx, map->img, map->coin, map->l, map->v);
+			if(map->map[map->ypos][map->xpos] == '0')
+				mlx_put_image_to_window(map->mlx, map->img, map->space, map->l, map->v);
+			if(map->map[map->ypos][map->xpos] == '1')
+				mlx_put_image_to_window(map->mlx, map->img, map->wall, map->l, map->v);
+			map->xpos++;
+			map->l += 64;
 		}
-		y += 64;
+		write(1, "\n", 1);
+		map->ypos++;
+		map->v += 64;
 	}	
-	mlx_loop(mlx);
+	mlx_loop(map->mlx);
 }
 
 int	main(int ac, char **av)
@@ -156,11 +182,10 @@ int	main(int ac, char **av)
 	
 	
 	if(!parsing(ac, av, &map))
-		write(2, "ERROR\n", 6);
-	while(*map.map)
-		printf("%s", *map.map++);
+		return (write(2, "ERROR\n", 6), exit(0), 0);
+	// while(*map.map)
+	// 	printf("%s", *map.map++);
 	fflush(stdout);	
 	draw_map(&map);
 }
-
 
