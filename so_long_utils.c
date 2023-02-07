@@ -6,11 +6,21 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:33:32 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/07 13:35:35 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/07 15:16:44 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int i;
+
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
+}
 
 char	*ft_strdup(const char *s)
 {

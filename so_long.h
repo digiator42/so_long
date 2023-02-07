@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/07 13:35:49 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/07 16:46:45 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,14 @@ typedef struct s_map
 	char	*addr;
 	int	x;
 	int	y;
+	int c_cnt;
+	int p_index;
+	int e_index;
 	int	bits_per_pixel;
 	int	line_length;
 } t_map;
 
 char	*ft_strcpy(char *dest, char *src);
 char	*ft_strdup(const char *s);
-
+int	ft_strcmp(char *s1, char *s2);
 #endif
