@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:33:32 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/07 15:16:44 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/07 21:59:13 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,21 @@ int	ft_strcmp(char *s1, char *s2)
 	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
 		i++;
 	return (s1[i] - s2[i]);
+}
+
+int	ft_len(const char *c)
+{
+	int	i;
+
+	i = 0;
+	if (c)
+	{
+		while (c[i] != '\0' && c[i] != '\n')
+			i++;
+	}
+	else
+		return (0);
+	return (i);
 }
 
 char	*ft_strdup(const char *s)
