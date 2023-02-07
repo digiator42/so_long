@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/06 16:41:17 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/07 13:27:25 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,33 +35,54 @@ int parsing(int ac, char **av)
 	return 1;	
 }
 
-void check_line(char *line, int i, int len)
+int valid(char **map)
+{
+	int y = 0;
+	while (map[y])
+	{
+		if(map[y][0] != '1')
+			return 0;
+		y++;
+	}
+	y = 0;
+	int len = ft_strlen(map[y]) - 1;
+	while(map[y][len])
+	{
+		if(map[y][len] != '1')
+			return(0);
+		y++;
+	}
+	return 1;
+}
+
+void header_footer(char *line, int i, int len)
 {
 	int j;
 
 	j = 0;
-	// write(1, line, strlen(line));
+	
 	while(line[j] && line[j] != '\n')
 	{
 		if((i == 0 || i == len-1) && line[j] != '1')
 			return (printf("not 1"), free(line), exit(0));
 		j++;
 	}
+	
 }
 
-void read_map(char *arg)
+void read_map(char *arg, t_map *map)
 {
 	int i;
-	int len;
+	int height;
 	char *line;
 	
-	i = 0;
-	len = 0;
+	height = 0;
 	int fd = open(arg, O_RDONLY);
-	while(get_next_line(fd))
-		len++;
+	while((line = get_next_line(fd)))
+		(free(line), height++);
 	close(fd);
-	
+	map->map = malloc(sizeof(char *) * (height + 1));
+	map->map[height] = NULL;
 	fd = open(arg, O_RDONLY);
 	i = 0;
 	while(1)
@@ -69,7 +90,9 @@ void read_map(char *arg)
 		line = get_next_line(fd);
 		if(!line)
 			break;
-		check_line(line, i, len);
+		map->map[i] = malloc(sizeof(char) * (ft_strlen(line) + 1));
+		strcpy(map->map[i], line);
+		free(line);
 		i++;
 	}
 }
@@ -77,6 +100,7 @@ void read_map(char *arg)
 
 int	main(int ac, char **av)
 {
+	t_map map;
 	// void *mlx;
 	// // void *mlx_win = NULL;
 	// t_data img;
@@ -89,7 +113,9 @@ int	main(int ac, char **av)
 	
 	if(!parsing(ac, av))
 		write(2, "ERROR\n", 6);
-	read_map(av[1]);
+	read_map(av[1], &map);
+	while(*(map.map))
+		printf("%s", *(map.map)++);
 	// mlx = mlx_init();
 	// img.img = mlx_new_window(mlx, 1280, 640, "so_long");
 	// image = mlx_xpm_file_to_image(mlx, "space.xpm", &w, &h);
@@ -110,3 +136,5 @@ int	main(int ac, char **av)
 	// mlx_put_image_to_window(mlx, img.img, image, 640, 320);
 	// mlx_loop(mlx);
 }
+
+
