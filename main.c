@@ -6,22 +6,21 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/07 13:27:25 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/07 14:52:39 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int is_valid(char *str)
+int is_valid_name(char *str)
 {
-	int len;
+	int i;
 	
-	len = ft_strlen(str);
-	if(!len)
-		return 0;
-	if(str[len-1] != 'r' || str[len-2] != 'e' 
-		|| str[len-3] != 'b' || str[len-4] != '.')
-			return 0;
+	i = 0;
+	while(*str != '.')
+		str++;
+	if(strcmp((char *)str, ".ber"))
+		return (printf("wrong name"));
 	return 1;		
 }
 
@@ -30,45 +29,43 @@ int parsing(int ac, char **av)
 	if(ac != 2)
 		return 0;
 
-	if(!is_valid(av[1]))
+	if(!is_valid_name(av[1]))
 		return 0;	
 	return 1;	
 }
 
+void header_footer(char *line)
+{
+	int j = 0;
+	while(line[j])
+	{
+		if(line[j] != '1' && line[j] != '\n')
+			return (printf("not 1"), exit(0));
+		j++;
+	}
+}
 int valid(char **map)
 {
-	int y = 0;
-	while (map[y])
+	int h = 0;
+	while (map[h])
 	{
-		if(map[y][0] != '1')
-			return 0;
-		y++;
+		if(map[h][0] != '1')
+			return (printf("y not valid"), 0);
+		h++;
 	}
-	y = 0;
-	int len = ft_strlen(map[y]) - 1;
-	while(map[y][len])
+	int x = 0;
+	int len = ft_strlen(map[x]) - 2;
+	while(map[x])
 	{
-		if(map[y][len] != '1')
-			return(0);
-		y++;
+		if(x == 0 || x == h-1)
+			header_footer(map[x]);
+		if(map[x][len] != '1')
+			return(printf("x not valid"), 0);
+		x++;
 	}
 	return 1;
 }
 
-void header_footer(char *line, int i, int len)
-{
-	int j;
-
-	j = 0;
-	
-	while(line[j] && line[j] != '\n')
-	{
-		if((i == 0 || i == len-1) && line[j] != '1')
-			return (printf("not 1"), free(line), exit(0));
-		j++;
-	}
-	
-}
 
 void read_map(char *arg, t_map *map)
 {
@@ -91,7 +88,7 @@ void read_map(char *arg, t_map *map)
 		if(!line)
 			break;
 		map->map[i] = malloc(sizeof(char) * (ft_strlen(line) + 1));
-		strcpy(map->map[i], line);
+		ft_strcpy(map->map[i], line);
 		free(line);
 		i++;
 	}
@@ -114,8 +111,10 @@ int	main(int ac, char **av)
 	if(!parsing(ac, av))
 		write(2, "ERROR\n", 6);
 	read_map(av[1], &map);
-	while(*(map.map))
-		printf("%s", *(map.map)++);
+	if(!valid(map.map))
+		return (0);
+	// while(*map.map)
+	// 	printf("%s", *map.map++);
 	// mlx = mlx_init();
 	// img.img = mlx_new_window(mlx, 1280, 640, "so_long");
 	// image = mlx_xpm_file_to_image(mlx, "space.xpm", &w, &h);

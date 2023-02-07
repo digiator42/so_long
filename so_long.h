@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/07 12:57:01 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/07 13:35:49 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ typedef struct s_map
 	int	bits_per_pixel;
 	int	line_length;
 } t_map;
+
+char	*ft_strcpy(char *dest, char *src);
+char	*ft_strdup(const char *s);
 
 #endif

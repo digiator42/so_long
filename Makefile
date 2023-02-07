@@ -2,7 +2,8 @@ NAME = so_long
 
 SRCS =	get_next_line/get_next_line.c 	  \
       	get_next_line/get_next_line_utils.c \
-	  	main.c								
+	  	main.c								\
+		so_long_utils.c						\
 
 OBJS = $(SRCS:.c=.o)
 
