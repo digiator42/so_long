@@ -25,6 +25,6 @@ clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(EXEC)
 
-re: fclean all EXEC
+re: fclean all 
