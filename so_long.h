@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/07 22:02:05 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/07 23:00:17 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void header_footer(char *line);
 int map_requisite(t_map *map, int h);
 int valid_map(t_map *map);
 void is_equal(t_map *map);
+int not_required(char c);
 
 #endif

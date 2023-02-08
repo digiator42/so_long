@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/07 22:00:19 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/08 13:19:00 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int parsing(int ac, char **av, t_map *map)
 	read_map(av[1], map);
 	if(!is_valid_name(av[1]) || !valid_map(map))
 		return 0;
-	return 1;	
+	return 1;
 }
 
 void map_init(t_map *map)
