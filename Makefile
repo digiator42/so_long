@@ -5,6 +5,7 @@ SRCS =	get_next_line/get_next_line.c 	  \
 	  	main.c								\
 		so_long_utils.c						\
 		parsing.c							\
+		parsing_hlpr.c
 
 OBJS = $(SRCS:.c=.o)
 

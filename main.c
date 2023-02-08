@@ -6,49 +6,11 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/08 13:19:00 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/08 13:41:23 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void read_map(char *arg, t_map *map)
-{
-	int i;
-	char *line;
-	
-	map->y = 0;
-	int fd = open(arg, O_RDONLY);
-	while((line = get_next_line(fd)))
-		(free(line), map->y++);
-	close(fd);
-	map->map = malloc(sizeof(char *) * (map->y + 1));
-	map->map[map->y] = NULL;
-	fd = open(arg, O_RDONLY);
-	i = 0;
-	while(1)
-	{
-		line = get_next_line(fd);
-		if(!line)
-			break;
-		map->map[i] = malloc(sizeof(char) * (ft_strlen(line) + 1));
-		ft_strcpy(map->map[i], line);
-		free(line);
-		i++;
-	}
-	is_equal(map);
-	map->x = ft_strlen(map->map[0]) - 1;
-}
-
-int parsing(int ac, char **av, t_map *map)
-{
-	if(ac != 2)
-		return 0;
-	read_map(av[1], map);
-	if(!is_valid_name(av[1]) || !valid_map(map))
-		return 0;
-	return 1;
-}
 
 void map_init(t_map *map)
 {
@@ -74,7 +36,7 @@ void draw_map(t_map *map)
 		map->l = 0;
 		while(map->xpos < map->x)
 		{
-			// write(1, &map->map[map->ypos][map->xpos], 1);
+			write(1, &map->map[map->ypos][map->xpos], 1);
 			if(map->map[map->ypos][map->xpos] == 'P')
 				mlx_put_image_to_window(map->mlx, map->img, map->player, map->l, map->v);
 			if(map->map[map->ypos][map->xpos] == 'E')

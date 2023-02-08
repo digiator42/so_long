@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/07 23:00:17 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/08 13:38:31 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_map
 	int	line_length;
 } t_map;
 
+int parsing(int ac, char **av, t_map *map);
 char	*ft_strcpy(char *dest, char *src);
 char	*ft_strdup(const char *s);
 int	ft_strcmp(char *s1, char *s2);
@@ -56,6 +57,9 @@ void header_footer(char *line);
 int map_requisite(t_map *map, int h);
 int valid_map(t_map *map);
 void is_equal(t_map *map);
-int not_required(char c);
+int is_valid_name(char *str);
+void header_footer(char *line);
+int is_required(char c);
+void is_equal(t_map *map);
 
 #endif

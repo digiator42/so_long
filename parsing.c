@@ -6,45 +6,11 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:00:35 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/08 13:32:27 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/08 13:38:56 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int is_valid_name(char *str)
-{	
-	while(*str != '.')
-		str++;
-	if(ft_strcmp((char *)str, ".ber"))
-		return (printf("wrong name"));
-	return 1;		
-}
-
-
-void header_footer(char *line)
-{
-	int j = 0;
-	while(line[j])
-	{
-		if(line[j] != '1' && line[j] != '\n')
-			return (printf("not 1"), exit(0));
-		j++;
-	}
-}
-
-int is_required(char c)
-{
-	int i = 0;
-	char str[5] = "1CPE0";
-	while(i < 5)
-	{
-		if(c == str[i])
-			return 1;
-		i++;	
-	}
-	return (0);	
-}
 
 int map_requisite(t_map *map, int h)
 {
@@ -101,14 +67,40 @@ int valid_map(t_map *map)
 	return 1;
 }
 
-void is_equal(t_map *map)
+void read_map(char *arg, t_map *map)
 {
-	map->ypos = 0;
-	while(map->map[map->ypos])
+	int i;
+	char *line;
+	
+	map->y = 0;
+	int fd = open(arg, O_RDONLY);
+	while((line = get_next_line(fd)))
+		(free(line), map->y++);
+	close(fd);
+	map->map = malloc(sizeof(char *) * (map->y + 1));
+	map->map[map->y] = NULL;
+	fd = open(arg, O_RDONLY);
+	i = 0;
+	while(1)
 	{
-		map->xpos = map->ypos + 1;
-		if(ft_len(map->map[map->ypos]) < ft_len(map->map[map->xpos]))
-			(printf("not equal"), exit(0));
-		map->ypos++;
+		line = get_next_line(fd);
+		if(!line)
+			break;
+		map->map[i] = malloc(sizeof(char) * (ft_strlen(line) + 1));
+		ft_strcpy(map->map[i], line);
+		free(line);
+		i++;
 	}
+	is_equal(map);
+	map->x = ft_strlen(map->map[0]) - 1;
+}
+
+int parsing(int ac, char **av, t_map *map)
+{
+	if(ac != 2)
+		return 0;
+	read_map(av[1], map);
+	if(!is_valid_name(av[1]) || !valid_map(map))
+		return 0;
+	return 1;
 }
