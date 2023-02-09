@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/08 14:02:47 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/09 16:24:14 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void draw_spaces(t_map *map)
 			map->xpos++;
 			map->l += 64;
 		}
-		write(1, "\n", 1);
 		map->ypos++;
 		map->v += 64;
 	}	
@@ -82,7 +81,7 @@ int	main(int ac, char **av)
 	if(!parsing(ac, av, &map))
 		return (write(2, "ERROR\n", 6), exit(0), 0);
 	// while(*map.map)
-	// 	printf("%s", *map.map++);
+	// 	ft_printf("%s", *map.map++);
 	fflush(stdout);	
 	draw_map(&map);
 }

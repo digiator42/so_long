@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/08 13:58:45 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/09 16:23:52 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "get_next_line/get_next_line.h"
+# include "ft_printf/ft_printf.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>

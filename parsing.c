@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:00:35 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/08 13:38:56 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/09 16:23:58 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,10 @@ int map_requisite(t_map *map, int h)
 				count++;
 			x++;
 		}
-		write(1, "\n", 1);
 		y++;
 	}
 	if(count != 2)
-		return (printf("wrong requisite"), 0);
+		return (ft_printf("wrong requisite"), 0);
 	return 1;	
 }
 
@@ -49,7 +48,7 @@ int valid_map(t_map *map)
 	while (map->map[h])
 	{
 		if(map->map[h][0] != '1')
-			return (printf("y not valid"), 0);
+			return (ft_printf("y not valid"), 0);
 		h++;
 	}
 	int x = 0;
@@ -59,7 +58,7 @@ int valid_map(t_map *map)
 		if(x == 0 || x == h-1)
 			header_footer(map->map[x]);
 		if(map->map[x][len] != '1')
-			return(printf("x not valid"), 0);
+			return(ft_printf("x not valid"), 0);
 		x++;
 	}
 	if(!map_requisite(map, h) || (map->x == map->y))

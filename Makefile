@@ -5,7 +5,16 @@ SRCS =	get_next_line/get_next_line.c 	  \
 	  	main.c								\
 		so_long_utils.c						\
 		parsing.c							\
-		parsing_hlpr.c
+		parsing_hlpr.c						\
+		ft_printf/ft_format.c			\
+		ft_printf/ft_printhex.c			\
+		ft_printf/ft_printf.c			\
+		ft_printf/ft_printpointer.c		\
+		ft_printf/ft_printunsigned.c		\
+		ft_printf/ft_putchar.c			\
+		ft_printf/ft_putnbr.c			\
+		ft_printf/ft_putstr.c
+
 
 OBJS = $(SRCS:.c=.o)
 
