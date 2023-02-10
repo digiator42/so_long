@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/09 16:24:14 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/10 18:36:21 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,26 @@ void draw_map(t_map *map)
 		map->ypos++;
 		map->v += 64;
 	}	
-	mlx_loop(map->mlx);
+}
+
+int tracing(int key, t_map *map)
+{
+	if(key == ON_DESTROY)
+		(exit(0), 0);
+	if(key == ON_KEYDOWN || key == ON_X)
+		(ft_printf("down"), 0);
+	if(key == ON_KEYUP || key == ON_W)
+		(ft_printf("up"), 0);
+	if(key == ON_KEYLEFT || key == ON_A)
+		(ft_printf("left"), 0);
+	if(key == ON_KEYRIGHT || key == ON_D)
+		(ft_printf("right"), 0);
+	return 0;	
 }
 
 int	main(int ac, char **av)
 {
 	t_map map;
-	
 	
 	if(!parsing(ac, av, &map))
 		return (write(2, "ERROR\n", 6), exit(0), 0);
@@ -84,5 +97,6 @@ int	main(int ac, char **av)
 	// 	ft_printf("%s", *map.map++);
 	fflush(stdout);	
 	draw_map(&map);
+	mlx_key_hook(map.img, tracing, map.mlx);
+	mlx_loop(map.mlx);
 }
-

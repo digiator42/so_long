@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/09 16:23:52 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/09 18:56:03 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,22 @@
 # include <stdio.h>
 // # include <zlib.h>
 # include <string.h>
+
+enum {
+	ON_KEYDOWN = 125,
+	ON_KEYUP = 126,
+	ON_KEYLEFT = 123,
+	ON_KEYRIGHT = 124,
+	ON_W = 13,
+	ON_A = 0,
+	ON_D = 2,
+	ON_X = 7,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 53
+};
 
 typedef struct s_map
 {
