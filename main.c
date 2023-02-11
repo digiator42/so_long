@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/11 15:04:18 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/11 18:08:11 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void draw_map(t_map *map)
 	draw_spaces(map);
 	map->ypos = 0;
 	map->v = 0;
-	ft_printf("%d %d\n", map->p_ypos, map->p_xpos);
 	while (map->ypos < map->y)
 	{
 		map->xpos = 0;
@@ -64,8 +63,6 @@ void draw_map(t_map *map)
 				mlx_put_image_to_window(map->mlx, map->img, map->coin, map->l, map->v);
 			else if(map->map[map->ypos][map->xpos] == '1')
 				mlx_put_image_to_window(map->mlx, map->img, map->wall, map->l, map->v);
-			else	
-				mlx_put_image_to_window(map->mlx, map->img, map->space, map->l, map->v);
 			map->xpos++;
 			map->l += 64;
 		}
@@ -86,7 +83,7 @@ int tracing(int key, t_map *map)
 		(move_player_left(map));
 	if(key == ON_KEYRIGHT || key == ON_D)
 		(move_player_right(map));
-	return 0;	
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -99,7 +96,7 @@ int	main(int ac, char **av)
 	// 	ft_printf("%s", *map.map++);
 	map_init(&map);
 	draw_map(&map);
-	mlx_key_hook(map.img, tracing, &map);
+	mlx_hook(map.img, 2, 0, tracing, &map);
 	mlx_loop(map.mlx);
 	return 0;
 }
