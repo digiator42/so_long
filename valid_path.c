@@ -6,29 +6,41 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:49:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/12 23:20:51 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/12 23:28:27 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// void	first_depth(int py, int px, t_map *path)
+// {
+// 	int x;
+//  	ft_printf("%c %d %d\n", path->map_dup[py][px], py, px);
+// 	if(path->map_dup[py][px] == '1' || path->map_dup[py][px] == 'M')
+// 		return ;	
+// 	static int i = 1;
+// 	path->map_dup[py][px] = 'M';
+// 	first_depth(py, px+1, path);
+// 	// ft_printf("------------px+1 %d\n", i++);
+// 	first_depth(py, px-1, path);
+// 	// ft_printf("------------px-1 %d\n", i++);
+// 	// first_depth(px, py - 1, path);
+// 	// ft_printf("------------py-1 %d\n", i++);
+// 	// first_depth(px, py + 1, path);
+// 	// ft_printf("------------py-1 %d\n", i++);
+// }
+
 void	first_depth(int py, int px, t_map *path)
 {
-	int x;
- 	ft_printf("%c %d %d\n", path->map_dup[py][px], py, px);
-	if(path->map_dup[py][px] == '1' || path->map_dup[py][px] == 'M')
-		return ;	
-	static int i = 1;
-	path->map_dup[py][px] = 'M';
-	first_depth(py, px+1, path);
-	// ft_printf("------------px+1 %d\n", i++);
-	first_depth(py, px-1, path);
-	// ft_printf("------------px-1 %d\n", i++);
-	// first_depth(px, py - 1, path);
-	// ft_printf("------------py-1 %d\n", i++);
-	// first_depth(px, py + 1, path);
-	// ft_printf("------------py-1 %d\n", i++);
+	while(path->map_dup[py][px] != '1')
+	{
+		if(path->map_dup[py][px] == 'M')
+			return ;
+		path->map_dup[py][px] = 'M';
+		px += 1;		
+	}
 }
+
 
 void valid_path(t_map *map)
 {	
