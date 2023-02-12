@@ -6,84 +6,78 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 02:18:00 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 02:24:50 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	map_init(t_map *map)
+void	map_init(t_map *m)
 {
 	int	w;
 	int	h;
 
 	w = 64;
 	h = 64;
-	map->total_moves = 0;
-	map->mlx = mlx_init();
-	map->img = mlx_new_window(map->mlx, (map->x * 64), (map->y * 64),
-			"so_long");
-	map->player = mlx_xpm_file_to_image(map->mlx, "includes/player.xpm", &w,
-			&h);
-	map->wall = mlx_xpm_file_to_image(map->mlx, "includes/wall.xpm", &w, &h);
-	map->coin = mlx_xpm_file_to_image(map->mlx, "includes/coin.xpm", &w, &h);
-	map->space = mlx_xpm_file_to_image(map->mlx, "includes/floor.xpm", &w, &h);
-	map->exit = mlx_xpm_file_to_image(map->mlx, "includes/exit.xpm", &w, &h);
+	m->total_moves = 0;
+	m->mlx = mlx_init();
+	m->img = mlx_new_window(m->mlx, (m->x * 64), (m->y * 64), "so_long");
+	m->player = mlx_xpm_file_to_image(m->mlx, "includes/player.xpm", &w, &h);
+	m->wall = mlx_xpm_file_to_image(m->mlx, "includes/wall.xpm", &w, &h);
+	m->coin = mlx_xpm_file_to_image(m->mlx, "includes/coin.xpm", &w, &h);
+	m->space = mlx_xpm_file_to_image(m->mlx, "includes/floor.xpm", &w, &h);
+	m->exit = mlx_xpm_file_to_image(m->mlx, "includes/exit.xpm", &w, &h);
 }
 
-void	draw_basics(t_map *map)
+void	draw_basics(t_map *m)
 {
-	map->ypos = 0;
-	map->v = 0;
-	while (map->ypos < map->y)
+	m->ypos = 0;
+	m->v = 0;
+	while (m->ypos < m->y)
 	{
-		map->xpos = 0;
-		map->l = 0;
-		while (map->xpos < map->x)
+		m->xpos = 0;
+		m->l = 0;
+		while (m->xpos < m->x)
 		{
-			mlx_put_image_to_window(map->mlx, map->img, map->space, map->l,
-					map->v);
-			if (map->map[map->ypos][map->xpos] == '1')
-				mlx_put_image_to_window(map->mlx, map->img, map->wall, map->l,
-						map->v);
-			map->xpos++;
-			map->l += 64;
+			mlx_put_image_to_window(m->mlx, m->img, m->space, m->l, m->v);
+			if (m->map[m->ypos][m->xpos] == '1')
+				mlx_put_image_to_window(m->mlx, m->img, m->wall, m->l, m->v);
+			m->xpos++;
+			m->l += 64;
 		}
-		map->ypos++;
-		map->v += 64;
+		m->ypos++;
+		m->v += 64;
 	}
 }
 
-void	draw_map(t_map *map)
+void	draw_map(t_map *m)
 {
-	draw_basics(map);
-	map->ypos = 0;
-	map->v = 0;
-	while (map->ypos < map->y)
+	draw_basics(m);
+	m->ypos = 0;
+	m->v = 0;
+	while (m->ypos < m->y)
 	{
-		map->xpos = 0;
-		map->l = 0;
-		while (map->xpos < map->x)
+		m->xpos = 0;
+		m->l = 0;
+		while (m->xpos < m->x)
 		{
-			if (map->ypos == map->p_ypos && map->xpos == map->p_xpos)
-				mlx_put_image_to_window(map->mlx, map->img, map->player, map->l,
-						map->v);
-			else if (map->map[map->ypos][map->xpos] == 'E')
-				mlx_put_image_to_window(map->mlx, map->img, map->exit, map->l,
-						map->v);
-			else if (map->map[map->ypos][map->xpos] == 'C')
-				mlx_put_image_to_window(map->mlx, map->img, map->coin, map->l,
-						map->v);
-			map->xpos++;
-			map->l += 64;
+			if (m->ypos == m->p_ypos && m->xpos == m->p_xpos)
+				mlx_put_image_to_window(m->mlx, m->img, m->player, m->l, m->v);
+			else if (m->map[m->ypos][m->xpos] == 'E')
+				mlx_put_image_to_window(m->mlx, m->img, m->exit, m->l, m->v);
+			else if (m->map[m->ypos][m->xpos] == 'C')
+				mlx_put_image_to_window(m->mlx, m->img, m->coin, m->l, m->v);
+			m->xpos++;
+			m->l += 64;
 		}
-		map->ypos++;
-		map->v += 64;
+		m->ypos++;
+		m->v += 64;
 	}
 }
 
-int	x_click(void)
+int	x_click(t_map *m)
 {
+	free_map(m);
 	exit(0);
 }
 
