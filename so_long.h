@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/12 22:42:18 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 00:24:36 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct s_map
 
 int			parsing(int ac, char **av, t_map *map);
 void		draw_map(t_map *map);
-void 		valid_path(t_map *map);
+int 		is_valid_path(t_map *map);
 char		*ft_strcpy(char *dest, char *src);
 char		*ft_strdup(const char *s);
 int			ft_strcmp(char *s1, char *s2);

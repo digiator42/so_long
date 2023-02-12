@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/12 23:00:49 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 00:25:06 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,8 @@ int	main(int ac, char **av)
 {
 	t_map map;
 
-	if (!parsing(ac, av, &map))
-		(ft_printf("ERROR\n"), free_map(&map), exit(0));
-	valid_path(&map);
-	// while(*map.map)
-	// 	ft_printf("%s", *map.map++);
+	if (!parsing(ac, av, &map) || !is_valid_path(&map))
+		(free_map(&map), exit(0));
 	map_init(&map);
 	draw_map(&map);
 	mlx_hook(map.img, 2, 0, tracing, &map);
