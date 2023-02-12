@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:33:32 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/12 22:45:34 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 01:00:36 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
@@ -39,7 +39,7 @@ int	ft_len(const char *c)
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (src[i] != '\0')
@@ -51,11 +51,11 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-void free_map(t_map *map)
+void	free_map(t_map *map)
 {
 	int i;
 	i = 0;
-	while(map->map[i])
+	while (map->map[i])
 		free(map->map[i++]);
-	free(map->map);	
+	free(map->map);
 }

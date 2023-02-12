@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 00:35:31 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 01:20:30 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@
 
 enum
 {
-	ON_KEYDOWN = 125,
-	ON_KEYUP = 126,
 	ON_KEYLEFT = 123,
-	ON_KEYRIGHT = 124,
+	ON_KEYRIGHT,
+	ON_KEYDOWN,
+	ON_KEYUP,
 	ON_W = 13,
 	ON_A = 0,
-	ON_D = 2,
-	ON_S = 1,
+	ON_S,
+	ON_D,
 	ON_DESTROY = 53,
 	MAX_H = 200,
 	MAX_W = 200
