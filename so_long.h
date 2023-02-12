@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 00:24:36 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 00:35:31 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,9 @@ int			parsing(int ac, char **av, t_map *map);
 void		draw_map(t_map *map);
 int 		is_valid_path(t_map *map);
 char		*ft_strcpy(char *dest, char *src);
-char		*ft_strdup(const char *s);
 int			ft_strcmp(char *s1, char *s2);
 int			ft_len(const char *c);
-void		header_footer(char *line);
+int			header_footer(char *line);
 int			map_requisite(t_map *map, int h);
 int			valid_map(t_map *map);
 int			is_valid_name(char *str);
@@ -82,8 +81,7 @@ void		move_player_right(t_map *map);
 void		move_player_left(t_map *map);
 void		move_player_up(t_map *map);
 void		move_player_down(t_map *map);
-void		header_footer(char *line);
 int			is_required(char c);
-void		is_equal(t_map *map);
+int			is_equal(t_map *map);
 void		free_map(t_map *map);
 #endif

@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:00:35 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/12 22:55:13 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 00:38:22 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	map_requisite(t_map *map, int h)
 		y++;
 	}
 	if (count != 2)
-		return (ft_printf("wrong requisite"), 0);
+		return (ft_printf("Wrong requisite"), 0);
 	return (1);
 }
 
@@ -55,7 +55,7 @@ int	valid_map(t_map *map)
 	while (map->map[h])
 	{
 		if (map->map[h][0] != '1')
-			return (ft_printf("y not valid"), 0);
+			return (ft_printf("Y not valid"), 0);
 		h++;
 	}
 	x = 0;
@@ -65,7 +65,7 @@ int	valid_map(t_map *map)
 		if (x == 0 || x == h - 1)
 			header_footer(map->map[x]);
 		if (map->map[x][len] != '1')
-			return (ft_printf("x not valid"), 0);
+			return (ft_printf("X not valid"), 0);
 		x++;
 	}
 	if (!map_requisite(map, h) || (map->x == map->y))
@@ -73,7 +73,7 @@ int	valid_map(t_map *map)
 	return (1);
 }
 
-void	read_map(char *arg, t_map *map)
+int	read_map(char *arg, t_map *map)
 {
 	int		i;
 	char	*line;
@@ -104,8 +104,8 @@ void	read_map(char *arg, t_map *map)
 		i++;
 	}
 	close(fd);
-	is_equal(map);
 	map->x = ft_strlen(map->map[0]) - 1;
+	return 1;
 }
 
 int	parsing(int ac, char **av, t_map *map)
@@ -113,7 +113,7 @@ int	parsing(int ac, char **av, t_map *map)
 	if (ac != 2)
 		return (0);
 	read_map(av[1], map);
-	if (!is_valid_name(av[1]) || !valid_map(map))
+	if (!is_valid_name(av[1]) || !valid_map(map) || !is_equal(map))
 		return (0);
 	return (1);
 }
