@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/11 21:07:48 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/12 21:02:08 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void map_init(t_map *map)
 {
 	int w = 64;
 	int h = 64;
+	map->total_moves = 0;
 	map->mlx = mlx_init();
 	map->img = mlx_new_window(map->mlx, (map->x * 64), (map->y * 64), "so_long");
 	map->player = mlx_xpm_file_to_image(map->mlx, "includes/player.xpm", &w, &h);
@@ -97,6 +98,7 @@ int	main(int ac, char **av)
 	
 	if(!parsing(ac, av, &map))
 		(ft_printf("ERROR\n"), exit(0));
+	valid_path(&map);
 	// while(*map.map)
 	// 	ft_printf("%s", *map.map++);
 	map_init(&map);

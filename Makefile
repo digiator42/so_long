@@ -7,6 +7,7 @@ SRCS =	get_next_line/get_next_line.c 	  \
 		parsing.c							\
 		parsing_hlpr.c						\
 		player_moves.c					\
+		valid_path.c					\
 		ft_printf/ft_format.c			\
 		ft_printf/ft_printhex.c			\
 		ft_printf/ft_printf.c			\

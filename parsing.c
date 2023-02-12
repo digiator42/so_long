@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:00:35 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/10 22:57:26 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/12 19:23:26 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	map_requisite(t_map *map, int h)
 
 	count = 0;
 	y = 1;
+	map->e_cnt = 0;
 	while (y < h)
 	{
 		x = 0;
@@ -34,7 +35,7 @@ int	map_requisite(t_map *map, int h)
 				(map->p_ypos = y), 
 				(map->p_xpos = x));
 			if (map->map[y][x] == 'E')
-				count++;
+				(count++, map->e_cnt++);
 			x++;
 		}
 		y++;

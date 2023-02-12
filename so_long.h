@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/12 14:08:52 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/12 20:53:43 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-// # include <mlx.h>
 # include <stdio.h>
-// # include <zlib.h>
 # include <string.h>
 
 enum
@@ -35,11 +33,14 @@ enum
 	ON_D = 2,
 	ON_S = 1,
 	ON_DESTROY = 53,
+	MAX_H = 200,
+	MAX_W = 200
 };
 
 typedef struct s_map
 {
 	char	**map;
+	char 	map_dup[MAX_H][MAX_W];
 	void	*img;
 	char	*addr;
 	void	*mlx;
@@ -60,10 +61,15 @@ typedef struct s_map
 	int		v;
 	int 	total_moves;
 	int		c_cnt;
+	int		e_cnt;
+	int		dupc_cnt;
+	int		dupe_cnt;
+	int		valid;
 }			t_map;
 
 int			parsing(int ac, char **av, t_map *map);
 void		draw_map(t_map *map);
+void 		valid_path(t_map *map);
 char		*ft_strcpy(char *dest, char *src);
 char		*ft_strdup(const char *s);
 int			ft_strcmp(char *s1, char *s2);
