@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:49:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/12 23:18:25 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/12 23:20:51 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,13 @@ void	first_depth(int py, int px, t_map *path)
 	static int i = 1;
 	path->map_dup[py][px] = 'M';
 	first_depth(py, px+1, path);
-
+	// ft_printf("------------px+1 %d\n", i++);
+	first_depth(py, px-1, path);
+	// ft_printf("------------px-1 %d\n", i++);
+	// first_depth(px, py - 1, path);
+	// ft_printf("------------py-1 %d\n", i++);
+	// first_depth(px, py + 1, path);
+	// ft_printf("------------py-1 %d\n", i++);
 }
 
 void valid_path(t_map *map)
