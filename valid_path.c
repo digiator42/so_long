@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:49:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 00:27:22 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 00:30:53 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void first_depth(int py, int px, t_map *path)
 {
 
-	if(path->map_dup[py][px] == '1' || path->map_dup[py][px] == 'X'
-		|| path->map_dup[py][px] == 'E')
+	if(path->map_dup[py][px] == '1' || path->map_dup[py][px] == 'X')
 		return ;	
 
 	path->map_dup[py][px] = 'X';
@@ -49,7 +48,7 @@ int is_valid_path(t_map *map)
 	{
 		x = 0;
 		while (x < map->x)
-			if(map->map_dup[y][x++] == 'C')
+			if(map->map_dup[y][x++] == 'C' || map->map_dup[y][x++] == 'E')
 				return (ft_printf("Not Valid Path"), 0);
 		y++;
 	}
