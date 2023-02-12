@@ -22,7 +22,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = cc
 
-CFLAGS = -g3 #-fsanitize=address
+CFLAGS = -g3 -fsanitize=address
 
 EXEC = so_long
 

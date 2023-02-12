@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/12 20:53:43 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/12 22:42:18 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ void		move_player_down(t_map *map);
 void		header_footer(char *line);
 int			is_required(char c);
 void		is_equal(t_map *map);
-
+void		free_map(t_map *map);
 #endif

@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:00:35 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/12 19:23:26 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/12 22:55:13 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,13 @@ void	read_map(char *arg, t_map *map)
 
 	map->y = 0;
 	fd = open(arg, O_RDONLY);
-	while ((line = get_next_line(fd)))
+	while (1)
+	{
+		line = get_next_line(fd);
+		if(!line)
+			break;
 		(free(line), map->y++);
+	}
 	close(fd);
 	map->map = malloc(sizeof(char *) * (map->y + 1));
 	map->map[map->y] = NULL;
@@ -98,6 +103,7 @@ void	read_map(char *arg, t_map *map)
 		free(line);
 		i++;
 	}
+	close(fd);
 	is_equal(map);
 	map->x = ft_strlen(map->map[0]) - 1;
 }
