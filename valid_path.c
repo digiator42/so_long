@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:49:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/12 23:03:40 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/12 23:04:41 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void valid_path(t_map *map)
 	}
 	map->dupc_cnt = map->c_cnt;
 	map->dupe_cnt = map->e_cnt;
+	first_depth(map->p_xpos, map->p_ypos, map);
 }
