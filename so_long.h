@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 20:03:35 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 20:10:54 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct s_map
 	int		p_xpos;
 	int		xpos;
 	int		ypos;
+	int		px;
+	int		py;
 	int		h;
 	int		l;
 	int		w;
