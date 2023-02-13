@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 14:32:00 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 22:28:28 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,6 @@ void	draw_map(t_map *m)
 	}
 }
 
-int	x_click(t_map *m)
-{
-	free_map(m);
-	exit(0);
-}
-
 int	tracing(int key, t_map *map)
 {
 	if (key == ON_DESTROY)
@@ -98,7 +92,7 @@ int	tracing(int key, t_map *map)
 
 int	main(int ac, char **av)
 {
-	t_map map;
+	t_map	map;
 
 	if (!parsing(ac, av, &map))
 		(free_map(&map), exit(0));

@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:00:35 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 16:51:40 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 22:46:29 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,8 @@ int	map_requisite(t_map *map, int h)
 {
 	int	x;
 	int	y;
-	int	count;
 
-	count = 0;
 	y = 1;
-	map->dupe_cnt = 0;
-	map->c_cnt = 0;
 	while (y < h)
 	{
 		x = 0;
@@ -32,17 +28,17 @@ int	map_requisite(t_map *map, int h)
 			if (map->map[y][x] == 'C')
 				map->c_cnt++;
 			if (map->map[y][x] == 'P')
-				(count++,
-					(map->p_ypos = y),
-					(map->p_xpos = x));
+			{
+				map->p_cnt++;
+				map->p_ypos = y;
+				map->p_xpos = x;
+			}
 			if (map->map[y][x] == 'E')
-				(count++, map->dupe_cnt++);
+				map->dupe_cnt++;
 			x++;
 		}
 		y++;
 	}
-	if (count != 2 || !map->c_cnt)
-		return (ft_printf("Wrong requisite"), 0);
 	return (1);
 }
 
@@ -64,14 +60,15 @@ int	valid_map(t_map *map)
 	while (map->map[x])
 	{
 		if (x == 0 || x == h - 1)
-			if(!header_footer(map->map[x]))
+			if (!header_footer(map->map[x]))
 				return (ft_printf("Not 1 header footer"), 0);
 		if (map->map[x][len] != '1')
 			return (ft_printf("last col not valid"), 0);
 		x++;
 	}
-	if (!map_requisite(map, h))
-		return (0);
+	if (!map_requisite(map, h) || map->p_cnt != 1
+		|| map->dupe_cnt != 1 || !map->c_cnt)
+		return (ft_printf("Wrong requisite"), 0);
 	return (1);
 }
 
@@ -104,9 +101,13 @@ int	parsing(int ac, char **av, t_map *map)
 {
 	char	*line;
 	int		fd;
+
 	if (ac != 2)
 		return (0);
 	map->y = 0;
+	map->p_cnt = 0;
+	map->dupe_cnt = 0;
+	map->c_cnt = 0;
 	fd = open(av[1], O_RDONLY);
 	while (1)
 	{
@@ -115,12 +116,10 @@ int	parsing(int ac, char **av, t_map *map)
 			break ;
 		(free(line), map->y++);
 	}
-	close(fd);	
+	close(fd);
 	read_map(av[1], map);
-	if(map->x == map->y)
-		return (ft_printf("is equal"), 0);
-	if (!is_valid_name(av[1]) ||  !is_equal(map)
-		|| !valid_map(map) || !is_valid_path(map))
+	if (!is_valid_name(av[1]) || !is_equal(map) || !valid_map(map)
+		|| !is_valid_path(map))
 		return (0);
 	return (1);
 }

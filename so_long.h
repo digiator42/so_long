@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 20:10:54 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 22:37:12 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_map
 	void	*exit;
 	int		x;
 	int		y;
+	int		p_cnt;
 	int		p_ypos;
 	int		p_xpos;
 	int		xpos;
@@ -83,4 +84,5 @@ void		move_player_down(t_map *map);
 int			is_required(char c);
 int			is_equal(t_map *map);
 void		free_map(t_map *map);
+int			x_click(t_map *m);
 #endif

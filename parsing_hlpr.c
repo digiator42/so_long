@@ -6,11 +6,17 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 13:35:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 16:40:55 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 22:47:01 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	x_click(t_map *m)
+{
+	free_map(m);
+	exit(0);
+}
 
 int	is_valid_name(char *str)
 {
@@ -53,7 +59,9 @@ int	is_required(char c)
 
 int	is_equal(t_map *map)
 {
-	int y  = 0;
+	int y;
+	
+	y = 0;
 	while (map->map[y])
 	{
 		int x = y + 1;
