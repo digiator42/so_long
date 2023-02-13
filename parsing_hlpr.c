@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 13:35:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 02:09:54 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 16:40:55 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_valid_name(char *str)
 	while (*str != '.')
 		str++;
 	if (ft_strcmp((char *)str, ".ber"))
-		return (ft_printf("wrong name"));
+		return (ft_printf("wrong name"), 0);
 	return (1);
 }
 
@@ -53,13 +53,16 @@ int	is_required(char c)
 
 int	is_equal(t_map *map)
 {
-	map->ypos = 0;
-	while (map->map[map->ypos])
+	int y  = 0;
+	while (map->map[y])
 	{
-		map->xpos = map->ypos + 1;
-		if (map->map[map->xpos] && ft_len(map->map[map->ypos]) != ft_len(map->map[map->xpos]))
+		int x = y + 1;
+		if (map->map[x] && ft_len(map->map[y]) != ft_len(map->map[x]))
+		{
+			ft_printf("%d %d", ft_len(map->map[y]), ft_len(map->map[x]));
 			return (ft_printf("Not equal\n"), 0);
-		map->ypos++;
+		}
+		y++;
 	}
 	return (1);
 }

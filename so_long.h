@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 01:20:30 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 20:03:35 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,11 @@ enum
 	ON_S,
 	ON_D,
 	ON_DESTROY = 53,
-	MAX_H = 200,
-	MAX_W = 200
 };
 
 typedef struct s_map
 {
 	char	**map;
-	char 	map_dup[MAX_H][MAX_W];
 	void	*img;
 	char	*addr;
 	void	*mlx;
