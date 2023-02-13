@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 22:28:28 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/13 23:13:43 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	draw_map(t_map *m)
 int	tracing(int key, t_map *map)
 {
 	if (key == ON_DESTROY)
-		(exit(0));
+		x_click(map);
 	if (key == ON_KEYDOWN || key == ON_S)
 		move_player_down(map);
 	if (key == ON_KEYUP || key == ON_W)
