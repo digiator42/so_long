@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 13:17:06 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 13:27:14 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,7 @@ int			is_required(char c);
 int			is_equal(t_map *map);
 void		free_map(t_map *map);
 int			x_click(t_map *m);
+void		map_init(t_map *m);
+void		draw_basics(t_map *m);
+void		draw_map(t_map *m);
 #endif
