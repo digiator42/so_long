@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 17:25:30 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 17:58:59 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_map
 	char	**map;
 	char	**dup_map;
 	void	*img;
-	char	*addr;
 	void	*mlx;
 	void	*player;
 	void	*wall;
@@ -54,8 +53,6 @@ typedef struct s_map
 	int		p_xpos;
 	int		xpos;
 	int		ypos;
-	int		px;
-	int		py;
 	int		h;
 	int		l;
 	int		w;
@@ -65,7 +62,6 @@ typedef struct s_map
 	int		e_cnt;
 	int		dupc_cnt;
 	int		dupe_cnt;
-	int		valid;
 }			t_map;
 
 int			parsing(int ac, char **av, t_map *map);
