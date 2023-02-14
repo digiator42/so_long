@@ -6,69 +6,65 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:00:35 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 22:46:29 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 13:15:24 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	map_requisite(t_map *map, int h)
+int	map_requisite(t_map *m)
 {
-	int	x;
-	int	y;
-
-	y = 1;
-	while (y < h)
+	m->y = 1;
+	while (m->y < m->h)
 	{
-		x = 0;
-		while (map->map[y][x] && map->map[y][x] != '\n')
+		m->x = 0;
+		while (m->map[m->y][m->x] && m->map[m->y][m->x] != '\n')
 		{
-			if (!is_required(map->map[y][x]))
-				return (ft_printf("invalid char %d %d", y, x), 0);
-			if (map->map[y][x] == 'C')
-				map->c_cnt++;
-			if (map->map[y][x] == 'P')
+			if (!is_required(m->map[m->y][m->x]))
+				return (0);
+			if (m->map[m->y][m->x] == 'C')
+				m->c_cnt++;
+			if (m->map[m->y][m->x] == 'P')
 			{
-				map->p_cnt++;
-				map->p_ypos = y;
-				map->p_xpos = x;
+				m->p_cnt++;
+				m->p_ypos = m->y;
+				m->p_xpos = m->x;
 			}
-			if (map->map[y][x] == 'E')
-				map->dupe_cnt++;
-			x++;
+			if (m->map[m->y][m->x] == 'E')
+				m->dupe_cnt++;
+			m->x++;
 		}
-		y++;
+		m->y++;
 	}
 	return (1);
 }
 
-int	valid_map(t_map *map)
+int	valid_map(t_map *m)
 {
-	int	h;
-	int	x;
 	int	len;
 
-	h = 0;
-	while (map->map[h])
+	m->h = 0;
+	m->x = 0;
+	while (m->map[m->h])
 	{
-		if (map->map[h][0] != '1')
+		if (m->map[m->h][0] != '1')
 			return (ft_printf("1st col not valid"), 0);
-		h++;
+		m->h++;
 	}
-	x = 0;
-	len = ft_len(map->map[x]) - 1;
-	while (map->map[x])
+	m->x = 0;
+	len = ft_len(m->map[m->x]) - 1;
+	while (m->map[m->x])
 	{
-		if (x == 0 || x == h - 1)
-			if (!header_footer(map->map[x]))
+		if (m->x == 0 || m->x == m->h - 1)
+			if (!header_footer(m->map[m->x]))
 				return (ft_printf("Not 1 header footer"), 0);
-		if (map->map[x][len] != '1')
+		if (m->map[m->x][len] != '1')
 			return (ft_printf("last col not valid"), 0);
-		x++;
+		m->x++;
 	}
-	if (!map_requisite(map, h) || map->p_cnt != 1
-		|| map->dupe_cnt != 1 || !map->c_cnt)
-		return (ft_printf("Wrong requisite"), 0);
+	if (!map_requisite(m) || m->p_cnt != 1
+		|| m->dupe_cnt != 1 || !m->c_cnt)
+		return (ft_printf("Wrong requisite\n"), 0);
 	return (1);
 }
 

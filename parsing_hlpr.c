@@ -6,19 +6,20 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 13:35:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 23:11:39 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 13:16:53 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	destroy_images(t_map *all)
+void	destroy_images(t_map *img)
 {
-	mlx_destroy_image(all->mlx, all->coin);
-	mlx_destroy_image(all->mlx, all->player);
-	mlx_destroy_image(all->mlx, all->wall);
-	mlx_destroy_image(all->mlx, all->space);
+	mlx_destroy_image(img->mlx, img->coin);
+	mlx_destroy_image(img->mlx, img->player);
+	mlx_destroy_image(img->mlx, img->wall);
+	mlx_destroy_image(img->mlx, img->space);
 }
+
 int	x_click(t_map *m)
 {
 	free_map(m);

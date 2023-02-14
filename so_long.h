@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/13 22:37:12 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 13:17:06 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char		*ft_strcpy(char *dest, char *src);
 int			ft_strcmp(char *s1, char *s2);
 int			ft_len(const char *c);
 int			header_footer(char *line);
-int			map_requisite(t_map *map, int h);
+int			map_requisite(t_map *map);
 int			valid_map(t_map *map);
 int			is_valid_name(char *str);
 void		move_player_right(t_map *map);
