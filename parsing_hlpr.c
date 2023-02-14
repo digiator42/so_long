@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 13:35:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 13:26:12 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 13:54:25 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ int	is_required(char c)
 
 int	is_equal(t_map *map)
 {
-	int y;
-	
+	int	y;
+	int	x;
+
 	y = 0;
 	while (map->map[y])
 	{
-		int x = y + 1;
+		x = y + 1;
 		if (map->map[x] && ft_len(map->map[y]) != ft_len(map->map[x]))
 		{
 			ft_printf("%d %d", ft_len(map->map[y]), ft_len(map->map[x]));

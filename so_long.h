@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 13:27:14 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 13:42:16 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ enum
 typedef struct s_map
 {
 	char	**map;
+	char	**dup_map;
 	void	*img;
 	char	*addr;
 	void	*mlx;
