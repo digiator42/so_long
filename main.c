@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:21:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 13:31:55 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 14:09:22 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	destroy_images(t_map *img)
 
 int	x_click(t_map *m)
 {
-	free_map(m);
+	free_map(m->map);
 	destroy_images(m);
 	mlx_destroy_window(m->mlx, m->img);
 	exit(0);
@@ -48,7 +48,7 @@ int	main(int ac, char **av)
 	t_map	map;
 
 	if (!parsing(ac, av, &map))
-		(free_map(&map), exit(0));
+		(free_map(map.map), exit(0));
 	map_init(&map);
 	draw_map(&map);
 	mlx_hook(map.img, 2, 0, tracing, &map);

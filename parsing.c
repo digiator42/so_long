@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:00:35 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 13:51:17 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 14:09:49 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,9 @@ int	parsing(int ac, char **av, t_map *map)
 	}
 	close(fd);
 	read_map(av[1], map);
-	if (!is_valid_name(av[1]) || !is_equal(map) || !valid_map(map)
-		|| !is_valid_path(map))
+	if (!is_valid_name(av[1]) || !is_equal(map) || !valid_map(map))
 		return (0);
+	if(!is_valid_path(map))
+		return (free_map(map->dup_map), 0);
 	return (1);
 }
