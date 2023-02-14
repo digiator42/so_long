@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:00:35 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 16:07:57 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 17:48:18 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	read_map(char *arg, t_map *map)
 	map->map = malloc(sizeof(char *) * (map->y + 1));
 	map->dup_map = malloc(sizeof(char *) * (map->y + 1));
 	map->map[map->y] = NULL;
+	map->dup_map[map->y] = NULL;
 	fd = open(arg, O_RDONLY);
 	i = 0;
 	while (1)
@@ -108,6 +109,8 @@ int	parsing(int ac, char **av, t_map *map)
 	map->dupe_cnt = 0;
 	map->c_cnt = 0;
 	fd = open(av[1], O_RDONLY);
+	if(fd == -1 || !is_valid_name(av[1]))
+		return (ft_printf("Not valid"), 0);
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -117,8 +120,7 @@ int	parsing(int ac, char **av, t_map *map)
 	}
 	close(fd);
 	read_map(av[1], map);
-	if (!is_valid_name(av[1]) || !is_equal(map)
-		|| !valid_map(map) || !is_valid_path(map))
-		return (free_map(map->map, map->h), free_map(map->dup_map, map->h), 0);
+	if (!is_equal(map) || !valid_map(map) || !is_valid_path(map))
+		return (free_map(map->map), free_map(map->dup_map), 0);
 	return (1);
 }

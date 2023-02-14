@@ -23,7 +23,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = cc
 
-CFLAGS = -g3 -Wall -Werror -Wextra -fsanitize=address
+CFLAGS = -g3 -Wall -Werror -Wextra 
 
 EXEC = so_long
 
@@ -31,7 +31,7 @@ all : $(NAME)
 
 $(NAME): $(OBJS)
 	(cd mlx && make)
-	$(CC) $(CFLAGS) $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(EXEC)
+	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC)
 
 clean:
 	rm -f $(OBJS)
