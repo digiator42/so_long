@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:10:19 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 17:58:59 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 18:53:33 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_map
 	int		l;
 	int		w;
 	int		v;
-	int 	total_moves;
+	int		total_moves;
 	int		c_cnt;
 	int		e_cnt;
 	int		dupc_cnt;
@@ -66,7 +66,8 @@ typedef struct s_map
 
 int			parsing(int ac, char **av, t_map *map);
 void		draw_map(t_map *map);
-int 		is_valid_path(t_map *map);
+void		destroy_images(t_map *img);
+int			is_valid_path(t_map *map);
 char		*ft_strcpy(char *dest, char *src);
 int			ft_strcmp(char *s1, char *s2);
 int			ft_len(const char *c);

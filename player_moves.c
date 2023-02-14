@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:02:57 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 17:50:42 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 18:50:32 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	move_player_right(t_map *map)
 		if (map->map[map->p_ypos][map->p_xpos + 1] == 'C')
 			map->c_cnt--;
 		++map->p_xpos;
+		mlx_clear_window(map->mlx, map->img);
 		draw_map(map);
 		map->map[map->p_ypos][map->p_xpos - 1] = '0';
 		map->map[map->p_ypos][map->p_xpos] = '0';
@@ -41,6 +42,7 @@ void	move_player_left(t_map *map)
 		if (map->map[map->p_ypos][map->p_xpos - 1] == 'C')
 			map->c_cnt--;
 		--map->p_xpos;
+		mlx_clear_window(map->mlx, map->img);
 		draw_map(map);
 		map->map[map->p_ypos][map->p_xpos + 1] = '0';
 		map->map[map->p_ypos][map->p_xpos] = '0';
@@ -61,6 +63,7 @@ void	move_player_up(t_map *map)
 		if (map->map[map->p_ypos - 1][map->p_xpos] == 'C')
 			map->c_cnt--;
 		--map->p_ypos;
+		mlx_clear_window(map->mlx, map->img);
 		draw_map(map);
 		map->map[map->p_ypos + 1][map->p_xpos] = '0';
 		map->map[map->p_ypos][map->p_xpos] = '0';
@@ -81,6 +84,7 @@ void	move_player_down(t_map *map)
 		if (map->map[map->p_ypos + 1][map->p_xpos] == 'C')
 			map->c_cnt--;
 		++map->p_ypos;
+		mlx_clear_window(map->mlx, map->img);
 		draw_map(map);
 		map->map[map->p_ypos - 1][map->p_xpos] = '0';
 		map->map[map->p_ypos][map->p_xpos] = '0';

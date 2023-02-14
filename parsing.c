@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:00:35 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 18:20:34 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 18:52:23 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	parsing(int ac, char **av, t_map *map)
 	map->dupe_cnt = 0;
 	map->c_cnt = 0;
 	fd = open(av[1], O_RDONLY);
-	if(fd == -1 || !is_valid_name(av[1]))
+	if (fd == -1 || !is_valid_name(av[1]))
 		return (ft_printf("Not valid"), 0);
 	while (1)
 	{
