@@ -2,3 +2,4 @@
 *.o
 git.sh
 so_long
+.DS_Store
