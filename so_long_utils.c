@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:33:32 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 15:28:22 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 15:58:18 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	free_map(char **map, int h)
 	int	i;
 
 	i = 0;
-	while (i < h - 1)
+	while (i < h)
 		free(map[i++]);
 	free(map);
 }
