@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:49:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 16:04:53 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 18:22:50 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	is_valid_path(t_map *map)
 		while (x < map->x)
 		{
 			if (map->dup_map[y][x] == 'C' || map->dupe_cnt)
-				return (ft_printf("Not Valid Path"), 0);
+				return (ft_printf("Error\nNot Valid Path"), 0);
 			x++;
 		}
 		y++;

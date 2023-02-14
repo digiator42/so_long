@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:00:35 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 17:48:18 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 18:20:34 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	valid_map(t_map *m)
 	while (m->map[m->h])
 	{
 		if (m->map[m->h][0] != '1')
-			return (ft_printf("1st col not valid"), 0);
+			return (ft_printf("Error\n1st col not valid"), 0);
 		m->h++;
 	}
 	m->x = 0;
@@ -57,14 +57,14 @@ int	valid_map(t_map *m)
 	{
 		if (m->x == 0 || m->x == m->h - 1)
 			if (!header_footer(m->map[m->x]))
-				return (ft_printf("Not 1 header footer"), 0);
+				return (ft_printf("Error\nNot 1 header footer"), 0);
 		if (m->map[m->x][len] != '1')
-			return (ft_printf("last col not valid"), 0);
+			return (ft_printf("Error\nlast col not valid"), 0);
 		m->x++;
 	}
 	if (!map_requisite(m) || m->p_cnt != 1
 		|| m->dupe_cnt != 1 || !m->c_cnt)
-		return (ft_printf("Wrong requisite\n"), 0);
+		return (ft_printf("Error\nWrong requisite\n"), 0);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 13:35:52 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 17:22:41 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 18:20:45 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	is_equal(t_map *map)
 	{
 		x = y + 1;
 		if (map->map[x] && ft_len(map->map[y]) != ft_len(map->map[x]))
-			return (ft_printf("Not equal\n"), 0);
+			return (ft_printf("Error\nNot equal\n"), 0);
 		y++;
 	}
 	return (1);
