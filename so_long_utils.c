@@ -6,7 +6,7 @@
 /*   By: ahassan <ahassan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:33:32 by ahassan           #+#    #+#             */
-/*   Updated: 2023/02/14 14:05:54 by ahassan          ###   ########.fr       */
+/*   Updated: 2023/02/14 15:28:22 by ahassan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-void	free_map(char **map)
+void	free_map(char **map, int h)
 {
 	int	i;
 
 	i = 0;
-	while (map[i])
+	while (i < h - 1)
 		free(map[i++]);
 	free(map);
 }
