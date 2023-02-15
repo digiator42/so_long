@@ -37,6 +37,6 @@ clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME) $(EXEC)
+	rm -f $(NAME) && cd mlx && make clean
 
-re: fclean all 
+re: fclean all
